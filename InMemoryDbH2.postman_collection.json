@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "38a2d2b9-120b-4315-90b6-9f3b177fb962",
+		"name": "InMemoryDbH2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create person to h2 db",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"anil kumar\",\n\t\"age\":32,\n\t\"emailId\":\"anil@gmail.com\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get person from h2 db",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Person from h2 db",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/persons/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persons",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get single person from h2 db",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/persons/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persons",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
