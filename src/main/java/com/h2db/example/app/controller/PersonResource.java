@@ -3,6 +3,7 @@ package com.h2db.example.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.h2db.example.app.entities.Person;
+import com.h2db.example.app.exception.RecordNotFoundException;
 import com.h2db.example.app.service.PersonService;
 
 /**
@@ -25,8 +27,12 @@ public class PersonResource {
     PersonService personService;
 
     @GetMapping("/persons")
-    private List<Person> getAllPersons() {
-        return personService.getAllPersons();
+    private ResponseEntity<List<Person>> getAllPersons() {
+    	List<Person> persons=personService.getAllPersons();
+    		if(persons.size() < 1) {
+    			throw new RecordNotFoundException("Record Not Found");
+    		}
+        return ResponseEntity.ok(persons);
     }
 
     @GetMapping("/persons/{id}")

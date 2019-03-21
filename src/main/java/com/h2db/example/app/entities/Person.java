@@ -3,8 +3,14 @@ package com.h2db.example.app.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
+
+import com.h2db.example.app.validator.Email;
 
 @Entity
+@Validated
 public class Person {
 
     @Id
@@ -12,6 +18,8 @@ public class Person {
     private int id;
     private String name;
     private int age;
+    @NotNull(message="email can not be null")
+    @Email(message="Invalid emailid")
     private String emailId;
 	public int getId() {
 		return id;
